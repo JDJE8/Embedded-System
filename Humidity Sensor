@@ -1,0 +1,17 @@
+//The map function is used to scale the analog sensor reading to a percentage value representing humidity.
+//It maps the humiditysensoroutput value ranging from 0-1023 (Range of analog readings to a percentage values between 10 and 17)
+//This is done to calibirate the sensor output to a meaningful range for humidity percentage
+
+const int analogIn = A1; //Connect the humidity sensor to this pin
+int humiditySensorOutput = 0;
+void setup() { 
+ Serial.begin(9600);
+}
+void loop() {
+ humiditySensorOutput = analogRead(analogIn);
+ int humidityPercentage = map(humiditySensorOutput, 0, 1023, 10, 70);
+ Serial.print("Humidity: "); // Printing out Humidity Percentage
+ Serial.print(humidityPercentage);
+ Serial.println("%");
+ delay(5000); // Iterate every 5 seconds
+}
