@@ -1,0 +1,26 @@
+//An infrared motion sensor is a device that detects movements
+//by sensing changes in the infrared light level
+//1. Everything emitts heat
+//2. The sensor sees this heat
+//3. Movement changes the heat signature
+
+int sensorState = 0; 
+void setup() 
+{ 
+pinMode(2, INPUT); 
+pinMode(LED_BUILTIN, OUTPUT); 
+
+} 
+void loop() 
+{  
+// read the state of the sensor/digital input 
+sensorState = digitalRead(2); 
+// check if sensor pin is HIGH. if it is, set the LED on. 
+if (sensorState == HIGH) { 
+digitalWrite(LED_BUILTIN, HIGH);//LED built-in by default 13 
+} else { 
+digitalWrite(LED_BUILTIN, LOW); 
+} 
+
+delay(10); // Delay a little bit to improve simulation performance 
+}
